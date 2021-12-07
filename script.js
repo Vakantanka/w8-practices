@@ -1,20 +1,21 @@
-const renderPage = (arr) => {
-    let returnHTML = "";
+const ages = [32, 39, 13, 16];
 
-    for (const item of arr) {
-        returnHTML += ``;
+function testFor() {
+    const resultArr = [];
+    for (const age of ages) {
+        if (age >= 18) {
+            resultArr.push(age);
+        }
     }
-
-    return returnHTML;
+    return resultArr;
 }
 
-async function loadEvent() {
-    // const res = await fetch(""); // resource URL
-    // const arr = await res.json();
+console.log(testFor());
 
-    // document.getElementById("root").insertAdjacentHTML("beforeend",renderPage(arr));
-    document.getElementById("root").insertAdjacentHTML("beforeend",`<h1>Load completed</h1>`);
-    console.log("Load completed.");
+const result = ages.filter(checkAdult);
+
+function checkAdult(age) {
+    return age >= 18;
 }
 
-window.addEventListener("load", loadEvent);
+console.log(result);
