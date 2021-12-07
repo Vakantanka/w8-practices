@@ -1,20 +1,31 @@
-const renderPage = (arr) => {
-    let returnHTML = "";
+/*
+     Objektumok másolása - spread operátor
+ */
 
-    for (const item of arr) {
-        returnHTML += ``;
+let person = {
+    firstname: "John",
+    lastName: "Doe",
+    address: {
+        street: "Peachfield",
+        city: "Budapest",
+        country: "Hungary"
     }
-
-    return returnHTML;
 }
 
-async function loadEvent() {
-    // const res = await fetch(""); // resource URL
-    // const arr = await res.json();
+const p1 = {...person};
 
-    // document.getElementById("root").insertAdjacentHTML("beforeend",renderPage(arr));
-    document.getElementById("root").insertAdjacentHTML("beforeend",`<h1>Load completed</h1>`);
-    console.log("Load completed.");
-}
+console.log(p1);
 
-window.addEventListener("load", loadEvent);
+const p2 = Object.assign({}, person);
+p2.firstname = "Jane";
+p2.address.street = "Main street";
+
+
+console.log(p2);
+
+const p3 =JSON.parse(JSON.stringify(person));
+console.log("p3: ", p3);
+
+/*
+    shallow copy 
+*/
