@@ -1,20 +1,39 @@
-const renderPage = (arr) => {
-    let returnHTML = "";
-
-    for (const item of arr) {
-        returnHTML += ``;
+const numbers = [1, 25, 33, 46];
+let minimum = numbers[0];
+/*
+for (let i = 0; i < numbers.length; i++) {
+    if (minimum > numbers[i]) {
+        minimum = numbers[i];
     }
-
-    return returnHTML;
 }
 
-async function loadEvent() {
-    // const res = await fetch(""); // resource URL
-    // const arr = await res.json();
+console.log(minimum);
+*/
+const reducer = (prev, curr) => Math.min(prev, curr);
 
-    // document.getElementById("root").insertAdjacentHTML("beforeend",renderPage(arr));
-    document.getElementById("root").insertAdjacentHTML("beforeend",`<h1>Load completed</h1>`);
-    console.log("Load completed.");
+minimum = numbers.reduce(reducer);
+console.log(minimum);
+
+const names = ['Alice', 'Bob', 'Alice', 'Tiff', 'Ubul'];
+
+const countNames = {};
+
+for (let i = 0; i < names.length; i++) {
+    if (countNames[names[i]]) {
+        countNames[names[i]]++;
+    } else {
+        countNames[names[i]] = 1;
+    }
 }
+console.log(countNames);
 
-window.addEventListener("load", loadEvent);
+let countedNames = names.reduce(function(allNames, name) {
+    if (name in allNames) {
+        allNames[name]++;
+    } else {
+        allNames[name] = 1;
+    }
+    return allNames;
+},{});
+
+console.log(countedNames);
